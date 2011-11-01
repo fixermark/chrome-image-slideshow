@@ -1,0 +1,3 @@
+[submodule "slider"]
+	path = slider
+	url = https://github.com/gre/slider.js.git
