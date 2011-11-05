@@ -1,0 +1,20 @@
+<html>
+<head>
+  <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <script language="javascript" src="fetch_photos.js"></script>
+  <script language="javascript">
+    $(function () {
+      fetch_photos(["Profile Photos"],"fixermark", function(out) {
+        var out_text="";
+        $.each(out, function(idx, item) {
+          out_text += idx+": "+item+"<br/>";
+        });
+        $("#output").html(out_text);
+      })
+    });
+  </script>
+</head>
+<body>
+<div id="output"></div>
+</body>
+</html>

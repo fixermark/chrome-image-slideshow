@@ -1,0 +1,3 @@
+Same-origin policy kills this implementation unless we run with --disable-web-security
+
+Note: --kiosk should run full-screen and _sort of_ does.

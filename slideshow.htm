@@ -3,15 +3,20 @@
   <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <script language="javascript" src="slider/lib/slider.min.js"></script>
   <link href="slider/lib/slider.min.css" rel="stylesheet" type="text/css">
+  <script language="javascript" src="fetch_photos.js"></script>
   <script language="javascript">
     $(function () {
       var slider = new Slider($("#slider"));
-      slider.setPhotos([
-        {"src" : "proposal.jpg"},
-        {"src" : "proposal2.jpg"}])
-      .setSize("100%","100%")
-      .setDuration(10000)
-      .start();
+      fetch_photos(["Comic-con 2011"], "fixermark", function(photo_urls) {
+        var slider_entries = [];
+        $.each(photo_urls, function(idx, url) {
+          slider_entries.push({"src" : url});
+        });
+        slider.setPhotos(slider_entries)
+        .setSize("100%","100%")
+        .setDuration(10000)
+        .start();
+      });
     });
   </script>
 </head>
