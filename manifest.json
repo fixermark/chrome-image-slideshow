@@ -1,0 +1,13 @@
+{
+  "name": "Image slideshow.",
+  "version": "1.0",
+  "description": "Displays images from Picasa in slideshow form.",
+  "browser_action": {
+    "default_icon": "icon.png",
+      "popup": "popup.html"
+  },
+  "permissions": [
+    "http://picasaweb.google.com/",
+    "http://api.flickr.com/"
+  ]
+}
