@@ -1,26 +1,40 @@
 <html>
-<head>
-  <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-  <script language="javascript" src="slider/lib/slider.min.js"></script>
-  <link href="slider/lib/slider.min.css" rel="stylesheet" type="text/css">
-  <script language="javascript" src="fetch_photos.js"></script>
-  <script language="javascript">
-    $(function () {
-      var slider = new Slider($("#slider"));
-      fetch_photos(["Comic-con 2011"], "fixermark", function(photo_urls) {
-        var slider_entries = [];
-        $.each(photo_urls, function(idx, url) {
-          slider_entries.push({"src" : url});
+  <head>
+    <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script language="javascript" src="slider/lib/slider.min.js"></script>
+    <link href="slider/lib/slider.min.css" rel="stylesheet" type="text/css">
+    <script language="javascript" src="fetch_photos.js"></script>
+    <script language="javascript">
+      // Returns a Javascript object containing information on which photos to load.
+      function get_photo_preferences() {
+        return({
+          "picasa" : {
+            "username" : localStorage["picasa username"],
+            "albums" : localStorage["picasa albums"].split(",")
+          }
         });
-        slider.setPhotos(slider_entries)
-        .setSize("100%","100%")
-        .setDuration(10000)
-        .start();
+      }
+
+      $(function () {
+        var slider = new Slider($("#slider"));
+        var photo_preferences=get_photo_preferences();
+        var picasa_preferences = photo_preferences["picasa"];
+        fetch_photos(picasa_preferences["albums"],
+                     picasa_preferences["username"],
+                     function(photo_urls) {
+          var slider_entries = [];
+          $.each(photo_urls, function(idx, url) {
+            slider_entries.push({"src" : url});
+          });
+          slider.setPhotos(slider_entries)
+          .setSize("100%","100%")
+          .setDuration(10000)
+          .start();
+        });
       });
-    });
-  </script>
-</head>
-<body>
-<div id="slider" style="width:100%;height:100%"></div>
-</body>
+    </script>
+  </head>
+  <body>
+    <div id="slider" style="width:100%;height:100%"></div>
+  </body>
 </html>

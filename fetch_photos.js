@@ -29,8 +29,7 @@ function get_photos_from_albums(album_urls, photo_handler) {
   var photo_urls = [];
 
   $.each(album_urls, function (idx, url) {
-      var query = $.ajax("http://picasaweb.google.com/data/feed/base/user/fixermark/albumid/5632179083863421505?alt=json&hl=en_US", {
-      //var query = $.ajax(url, {
+      var query = $.ajax(url, {
 	  type: "GET",
 	    dataType: "json",
 	});
@@ -48,7 +47,7 @@ function get_photos_from_albums(album_urls, photo_handler) {
 
 // Retrieves a map from album names to URLs from picasaweb.
 function get_album_name_url_map(username, map_receiver) {
-  var query = $.ajax("http://picasaweb.google.com/data/feed/base/user/"+username+"?alt=json&kind=album", {
+  var query = $.ajax("http://picasaweb.google.com/data/feed/base/user/"+username+"?alt=json&kind=album&access=all", {
       type: "GET",
       dataType: "json",
     });

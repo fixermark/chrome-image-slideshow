@@ -1,5 +1,33 @@
 <html>
+  <head>
+    <style>
+      body {min-width:325px; overflow-x: hidden}
+      input {width: 100%}
+    </style>
+    <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script language="javascript">
+      function save_settings() {
+        localStorage["picasa username"]=$("#picasa_username").val();
+        localStorage["picasa albums"]=$("#picasa_albums").val();
+      }
+      function load_settings() {
+        $("#picasa_username").val(localStorage["picasa username"]);
+        $("#picasa_albums").val(localStorage["picasa albums"]);
+      }
+      function launch_slideshow() {
+        save_settings();
+        chrome.tabs.create({url: 'slideshow.htm'})
+      }
+      $(function () {
+        load_settings();
+      });
+    </script>
+  </head>
   <body>
-    <button onclick="chrome.tabs.create({url: 'slideshow.htm'})">Hello!</button>
+    Picasa username<br>
+    <input id="picasa_username"></input><br>
+    Picasa albums to load (comma-separated list)<br>
+    <input id="picasa_albums"></input><br>
+    <button onclick="launch_slideshow()">Display slideshow</button>
   </body>
 </html>
