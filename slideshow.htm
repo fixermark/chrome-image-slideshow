@@ -5,6 +5,7 @@
     <link href="slider/lib/slider.min.css" rel="stylesheet" type="text/css">
     <script language="javascript" src="fetch_photos.js"></script>
     <script language="javascript">
+      arrow = {left: 37, right: 39};
       // Returns a Javascript object containing information on which photos to load.
       function get_photo_preferences() {
         return({
@@ -26,6 +27,18 @@
           $.each(photo_urls, function(idx, url) {
             slider_entries.push({"src" : url});
           });
+
+          $(document).keydown(function(e) {
+            if (e.keyCode == arrow.left) {
+              slider.prev();
+              return false;
+            }
+            if (e.keyCode == arrow.right) {
+              slider.next();
+              return false;
+            }
+          });
+
           slider.setPhotos(slider_entries)
           .setTheme("no-control")
           .setSize("100%","100%")
