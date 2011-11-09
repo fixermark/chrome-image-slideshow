@@ -1,6 +1,9 @@
 <html>
   <head>
     <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script language="javascript" src="signals.js"></script>
+    <script language="javascript" src="errorbar.js"></script>
+    <link href="errorbar.css" rel="stylesheet" type="text/css">
     <script language="javascript" src="slider/lib/slider.min.js"></script>
     <link href="slider/lib/slider.min.css" rel="stylesheet" type="text/css">
     <script language="javascript" src="fetch_photos.js"></script>
@@ -45,6 +48,7 @@
           .setDuration(10000)
           .start();
         });
+        Signal("error",{msg:"Signal received."});
       });
     </script>
     <style>
@@ -53,5 +57,11 @@
   </head>
   <body>
     <div id="slider" style="width:100%;height:100%"></div>
+   <div id="errorbar">
+      <button class="closebox">OK</button>
+        <div class="errormsg">
+          Hello, world!
+	</div>
+   </div>
   </body>
 </html>
