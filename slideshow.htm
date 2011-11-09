@@ -20,8 +20,11 @@
       }
 
       $(function () {
+        Handle("needs-authentication", function() {
+          chrome.tabs.create({url: 'http://picasaweb.google.com'})
+        });
         var slider = new Slider($("#slider"));
-        var photo_preferences=get_photo_preferences();
+        var photo_preferences = get_photo_preferences();
         var picasa_preferences = photo_preferences["picasa"];
         fetch_photos(picasa_preferences["albums"],
                      picasa_preferences["username"],
@@ -48,7 +51,6 @@
           .setDuration(10000)
           .start();
         });
-        Signal("error",{msg:"Signal received."});
       });
     </script>
     <style>

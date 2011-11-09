@@ -1,5 +1,5 @@
 // Fetches photos from picasaweb
-// Requires: jquery
+// Requires: jquery, signals.js
 
 // Retrieves photos from the specified albums.
 // Args:
@@ -34,14 +34,17 @@ function get_photos_from_albums(album_urls, photo_handler) {
 	    dataType: "json",
 	});
       query
-	.error(function () {alert("error retrieving photo urls from" + url)})
+	.error(function () {
+	  Signal("error",{msg: "Error retrieving photos from " + url});
+	  Signal("needs-authentication");
+	})
 	.success(function(jsondata) {
-	    push_photo_urls(jsondata, photo_urls);
-	    count_read += 1;
-	    if (count_read == album_urls.length) {
-	      photo_handler(photo_urls);
-	    }
-	  });
+	  push_photo_urls(jsondata, photo_urls);
+	  count_read += 1;
+	  if (count_read == album_urls.length) {
+	    photo_handler(photo_urls);
+	  }
+	});
     });
 }
 
@@ -52,7 +55,10 @@ function get_album_name_url_map(username, map_receiver) {
       dataType: "json",
     });
   query
-    .error(function() {alert("error");})
+    .error(function() {
+      Signal("error",{msg: "Error connecting to Picasa."});
+      Signal("needs-authentication");
+    })
     .success(function(jsondata) {
 	var album_name_url_map={};
 	$.each(jsondata.feed.entry, function(idx, entry) {
