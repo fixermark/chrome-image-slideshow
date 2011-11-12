@@ -1,5 +1,10 @@
 // Fetches photos from picasaweb
 // Requires: jquery, signals.js
+//
+// Copyright 2011 Mark T. Tomczak
+//       
+// See the README file for license information
+
 
 // Retrieves photos from the specified albums.
 // Args:

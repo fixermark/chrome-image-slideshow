@@ -1,3 +1,7 @@
+// Copyright 2011 Mark T. Tomczak
+//       
+// See the README file for license information
+
 // TODO(mtomczak): This should probably be a jQuery extension
 
 function Handle(signal, handler) {

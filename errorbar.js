@@ -1,3 +1,7 @@
+// Copyright 2011 Mark T. Tomczak
+//       
+// See the README file for license information
+
 // Handler for the error bar
 
 $(function() {
