@@ -1,29 +1,43 @@
 About
 =====
 
-Image Slideshow animates a collection of images fullscreen on a page.
-Use it with Chrome in fullscreen mode to create decorative wall art!
+"Image slideshow" is a simple Chrome extension that displays images from a
+specified source (picasaweb account) as an automatically-rotating slide show.
+Use it in a kiosk-style configuration to make delightful rotating wall-art.
 
 Usage
 =====
 
-To install Image Slideshow as an experimental Chrome extension:
+To use the extension, clone the repository to a local directory and pull in
+the slider submodule.
 
-* Select Extensions from the Chrome "Tools" menu.
-* Click the "Developer Mode" checkbox to open developer options.
-* Click "Load unpacked extension..." Navigate to the root of the extension
-  directory  (the location where manifest.json lives) and select that
-  directory.
-* The extension will add an icon to your navigation bar. To start a slideshow,
-  click the icon to configure your settings (select username and albums to
-  show), then click "Display Slideshow" to begin.
+Launch Chrome, and do as follows:
+
+* Select "Extensions" from the "Tools" menu.
+* Enable the "Developer mode" checkbox in the top-right corner of the Extensions
+  options page.
+* Select "Load unpacked extension..." and navigate to the root directory of the
+  repository (the directory containing the "manifest.json" file).
+* The extension adds a "Start image slideshow" button to the toolbar. Select
+  it, configure your picasa information, and click "Display slideshow." NOTE:
+  You will need to have already logged into picasaweb; if you are not logged in,
+  the extension will open picasaweb.google.com for you.
+
+While the slideshow is displayed, the arrow keys will rotate forward and
+backward.
+
+Chrome can be set to fullscreen ("kiosk") mode by pressing F11 or clicking the
+rightmost icon in the "Zoom" menu option (the square with opposing arrows in
+two corners). This makes for an excellent picture-frame-style presentation.
 
 Future Development
 ==================
 
-* Support for other image APIs (Flickr, Shutterfly, Specific URLs)
-* Proper scaling of images with aspect ratios different from the window aspect
-  ratio.
+* Non-stock icons.
+* More image sources (flickr, shutterfly, img URLs).
+* Resize images with aspect ratios that do not match window aspect ratio.
+* Selection of other slider transitions / setting transition time.
+* Randomized image order.
 
 License
 =======

@@ -8,6 +8,6 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "http://picasaweb.google.com/",
+    "http://picasaweb.google.com/"
   ]
 }
