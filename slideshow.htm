@@ -4,7 +4,8 @@
        See the README file for license information
     -->
   <head>
-    <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <!--<script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>-->
+    <script language="javascript" src="jquery.min.js"></script>
     <script language="javascript" src="signals.js"></script>
     <script language="javascript" src="errorbar.js"></script>
     <link href="errorbar.css" rel="stylesheet" type="text/css">
@@ -30,14 +31,19 @@
         var slider = new Slider($("#slider"));
         var photo_preferences = get_photo_preferences();
         var picasa_preferences = photo_preferences["picasa"];
-        fetch_photos(picasa_preferences["albums"],
-                     picasa_preferences["username"],
-                     function(photo_urls) {
-          var slider_entries = [];
-          $.each(photo_urls, function(idx, url) {
-            slider_entries.push({"src" : url});
-          });
+//        fetch_photos(picasa_preferences["albums"],
+//                     picasa_preferences["username"],
+//                     function(photo_urls) {
+//          var slider_entries = [];
+//          $.each(photo_urls, function(idx, url) {
+//            slider_entries.push({"src" : url});
+//          });
 
+        var slider_entries=[
+          {"src" : "test1.jpg"},
+          {"src" : "test2.jpg"},
+          {"src" : "test3.jpg"}
+        ];
           $(document).keydown(function(e) {
             if (e.keyCode == arrow.left) {
               slider.prev();
@@ -52,10 +58,11 @@
           slider.setPhotos(slider_entries)
           .setTheme("no-control")
           .setSize("100%","100%")
+          .setTransition("transition-zoomin")
           .setDuration(10000)
           .start();
         });
-      });
+//      });
     </script>
     <style>
       body {margin:0px}
